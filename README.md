@@ -6,7 +6,7 @@ PharmaLink is a full-stack, microservices-based pharmacy intelligence and vendor
 
 
 
----
+
 
 
 
@@ -46,7 +46,7 @@ The system has two main user flows:
 
 
 
----
+
 
 
 
@@ -94,7 +94,7 @@ The system has two main user flows:
 
 
 
----
+
 
 
 
@@ -116,7 +116,7 @@ The system has two main user flows:
 
 7. Vendor is redirected to:/vendor?token=<access_token>
 
----
+
 
 
 
@@ -153,7 +153,7 @@ The system has two main user flows:
 ### Vendor Service
 
 | Method | Endpoint                 | Description                           |
-|--------|--------------------------|---------------------------------------|
+|--|--||
 | GET    | `/login`                 | Redirect to IBM App ID login          |
 | GET    | `/callback`              | OAuth callback + pharmacy creation    |
 | GET    | `/vendor/inventory`      | Get medicines for logged-in vendor pharmacy |
@@ -162,7 +162,7 @@ The system has two main user flows:
 
 
 
----
+
 
 
 
@@ -178,7 +178,7 @@ The system has two main user flows:
 
 
 
----
+
 
 
 
@@ -200,7 +200,7 @@ The system has two main user flows:
 
 
 
----
+
 
 
 
