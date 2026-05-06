@@ -152,21 +152,13 @@ The system has two main user flows:
 
 ### Vendor Service
 
-
-
-| Method | Endpoint | Description |
-
-|--------|----------|-------------|
-
-| GET | `/login` | Redirect to IBM App ID login |
-
-| GET | `/callback` | OAuth callback + pharmacy creation |
-
-| GET | `/vendor/inventory` | Get medicines for logged-in vendor pharmacy |
-
-| POST | `/vendor/medicine` | Add medicine to pharmacy inventory |
-
-| DELETE | `/vendor/medicine/:id` | Delete medicine from inventory |
+| Method | Endpoint                 | Description                           |
+|--------|--------------------------|---------------------------------------|
+| GET    | `/login`                 | Redirect to IBM App ID login          |
+| GET    | `/callback`              | OAuth callback + pharmacy creation    |
+| GET    | `/vendor/inventory`      | Get medicines for logged-in vendor pharmacy |
+| POST   | `/vendor/medicine`       | Add medicine to pharmacy inventory    |
+| DELETE | `/vendor/medicine/:id`   | Delete medicine from inventory        |
 
 
 
