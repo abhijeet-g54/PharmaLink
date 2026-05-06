@@ -1,4 +1,4 @@
-\# PharmaLink
+# PharmaLink
 
 
 
@@ -10,7 +10,7 @@ PharmaLink is a full-stack, microservices-based pharmacy intelligence and vendor
 
 
 
-\## Overview
+## Overview
 
 
 
@@ -18,31 +18,31 @@ The system has two main user flows:
 
 
 
-\### 1. User Dashboard
+### 1. User Dashboard
 
-\- Search medicines across multiple pharmacies
+- Search medicines across multiple pharmacies
 
-\- View price, stock, manufacturer, and dosage information
+- View price, stock, manufacturer, and dosage information
 
-\- Compare medicines
+- Compare medicines
 
-\- Filter results by price, availability, and manufacturer
+- Filter results by price, availability, and manufacturer
 
-\- View nearby connected pharmacies
+- View nearby connected pharmacies
 
 
 
-\### 2. Vendor Dashboard
+### 2. Vendor Dashboard
 
-\- Login via IBM App ID
+- Login via IBM App ID
 
-\- Automatic pharmacy registration on first login
+- Automatic pharmacy registration on first login
 
-\- Add, update, and delete medicines
+- Add, update, and delete medicines
 
-\- Manage inventory linked to a specific pharmacy (`pharmacyId`)
+- Manage inventory linked to a specific pharmacy (`pharmacyId`)
 
-\- Secure vendor-scoped data access
+- Secure vendor-scoped data access
 
 
 
@@ -50,19 +50,19 @@ The system has two main user flows:
 
 
 
-\## Architecture
+## Architecture
 
 
 
-\### Frontend
+### Frontend
 
-\- React (Vite)
+- React (Vite)
 
-\- TailwindCSS
+- TailwindCSS
 
-\- Component-based UI
+- Component-based UI
 
-\- Two routes:
+- Two routes:
 
 &nbsp; - `/` → User dashboard
 
@@ -70,27 +70,27 @@ The system has two main user flows:
 
 
 
-\### Backend (Microservices)
+### Backend (Microservices)
 
-\- Vendor Service (Authentication + pharmacy management)
+- Vendor Service (Authentication + pharmacy management)
 
-\- Inventory Service (Medicine CRUD with Cloudant)
+- Inventory Service (Medicine CRUD with Cloudant)
 
-\- Search Service (Aggregates data across pharmacies)
+- Search Service (Aggregates data across pharmacies)
 
-\- Rcommendation Service(Uses IBM Watsonx.ai)
+- Rcommendation Service(Uses IBM Watsonx.ai)
 
 
 
-\### Database
+### Database
 
-\- IBM Cloudant
+- IBM Cloudant
 
 &nbsp; - `pharmacies` database
 
 &nbsp; - `medicines` database
 
-\- Medicines are linked to pharmacies using `pharmacyId`
+- Medicines are linked to pharmacies using `pharmacyId`
 
 
 
@@ -98,33 +98,33 @@ The system has two main user flows:
 
 
 
-\## Authentication Flow (Vendor)
+## Authentication Flow (Vendor)
 
 
 
-1\. User clicks \*\*Vendor Login\*\*
+1. User clicks **Vendor Login**
 
-2\. Redirects to IBM App ID login page
+2. Redirects to IBM App ID login page
 
-3\. After login, App ID returns authorization code
+3. After login, App ID returns authorization code
 
-4\. Backend exchanges code for access token
+4. Backend exchanges code for access token
 
-5\. User email is extracted from token
+5. User email is extracted from token
 
-6\. Pharmacy is created automatically if not already present
+6. Pharmacy is created automatically if not already present
 
-7\. Vendor is redirected to:/vendor?token=<access\_token>
+7. Vendor is redirected to:/vendor?token=<access_token>
 
 ---
 
 
 
-\## Data Models
+## Data Models
 
 
 
-\### Pharmacy
+### Pharmacy
 
 
 
@@ -132,7 +132,7 @@ The system has two main user flows:
 
 {
 
-"\_id": "1",
+"_id": "1",
 
 "name": "Apollo Pharmacy",
 
@@ -146,11 +146,11 @@ The system has two main user flows:
 
 ```
 
-\## API Endpoints
+## API Endpoints
 
 
 
-\### Vendor Service
+### Vendor Service
 
 
 
@@ -174,15 +174,15 @@ The system has two main user flows:
 
 
 
-\### Inventory Service
+### Inventory Service
 
-\- Handles all Cloudant operations for medicines
+- Handles all Cloudant operations for medicines
 
-\- Performs CRUD operations on `medicines` database
+- Performs CRUD operations on `medicines` database
 
-\- Ensures strict scoping using `pharmacyId` for multi-tenant isolation
+- Ensures strict scoping using `pharmacyId` for multi-tenant isolation
 
-\- Used internally by vendor and search services
+- Used internally by vendor and search services
 
 
 
@@ -190,13 +190,13 @@ The system has two main user flows:
 
 
 
-\### Search Service
+### Search Service
 
-\- Aggregates medicines across all pharmacies
+- Aggregates medicines across all pharmacies
 
-\- Provides unified search results for users
+- Provides unified search results for users
 
-\- Returns:
+- Returns:
 
 &nbsp; - Search results
 
@@ -212,57 +212,57 @@ The system has two main user flows:
 
 
 
-\## Environment Variables
+## Environment Variables
 
 
 
-All environment variables are stored in the \*\*root `.env` file\*\* and shared across services via Docker Compose.
+All environment variables are stored in the **root `.env` file** and shared across services via Docker Compose.
 
 
 
 ```env
 
-\# Cloudant
+# Cloudant
 
-CLOUDANT\_URL=
+CLOUDANT_URL=
 
-CLOUDANT\_USERNAME=
+CLOUDANT_USERNAME=
 
-CLOUDANT\_PASSWORD=
-
-
-
-\# IBM App ID
-
-APPID\_ISSUER=
-
-APPID\_CLIENT\_ID=
-
-APPID\_CLIENT\_SECRET=
-
-APPID\_JWKS\_URI=
-
-APPID\_REDIRECT\_URI=
+CLOUDANT_PASSWORD=
 
 
 
-\# Ports
+# IBM App ID
+
+APPID_ISSUER=
+
+APPID_CLIENT_ID=
+
+APPID_CLIENT_SECRET=
+
+APPID_JWKS_URI=
+
+APPID_REDIRECT_URI=
+
+
+
+# Ports
 
 PORT=5004
 
 
 
-\# Watson
+# Watson
 
-WATSONX\_API\_KEY=
+WATSONX_API_KEY=
 
-WATSONX\_URL=
+WATSONX_URL=
 
-WATSONX\_PROJECT\_ID=
+WATSONX_PROJECT_ID=
 
 ```
 
-\# Running Locally
+# Running Locally
 
 
 
@@ -270,7 +270,7 @@ The entire system runs using Docker Compose.
 
 
 
-\## Start All Services
+## Start All Services
 
 
 
@@ -280,7 +280,7 @@ docker-compose up --build
 
 ```
 
-\## Services Started
+## Services Started
 
 
 
@@ -288,89 +288,89 @@ This will start:
 
 
 
-\- \*\*Frontend (User + Vendor UI)\*\*
+- **Frontend (User + Vendor UI)**
 
-\- \*\*Vendor Service\*\*
+- **Vendor Service**
 
-\- \*\*Inventory Service\*\*
+- **Inventory Service**
 
-\- \*\*Search Service\*\*
+- **Search Service**
 
-\- \*\*Recommendation Service\*\*
+- **Recommendation Service**
 
-\- \*\*Analytics Service\*\*
-
-
-
-\### Frontend Routes
+- **Analytics Service**
 
 
 
-\#### User Application
-
-\- `/` → Medicine search dashboard (public user view)
+### Frontend Routes
 
 
 
-\#### Vendor Application
+#### User Application
 
-\- `/vendor` → Vendor inventory dashboard  
-
-\- `/vendor?token=...` → Authenticated vendor session (via App ID redirect)
+- `/` → Medicine search dashboard (public user view)
 
 
 
-\## Key Design Decisions
+#### Vendor Application
+
+- `/vendor` → Vendor inventory dashboard  
+
+- `/vendor?token=...` → Authenticated vendor session (via App ID redirect)
 
 
 
-\- Single root `.env` file shared across all services via Docker Compose
-
-\- Fully containerized microservices architecture
-
-\- Vendor isolation is enforced using `pharmacyId`
-
-\- IBM App ID handles authentication (no custom auth system)
-
-\- Cloudant used as primary NoSQL database
-
-\- Services communicate over internal Docker network
-
-\- Frontend supports both user and vendor workflows in one project
+## Key Design Decisions
 
 
 
-\## Current Status
+- Single root `.env` file shared across all services via Docker Compose
+
+- Fully containerized microservices architecture
+
+- Vendor isolation is enforced using `pharmacyId`
+
+- IBM App ID handles authentication (no custom auth system)
+
+- Cloudant used as primary NoSQL database
+
+- Services communicate over internal Docker network
+
+- Frontend supports both user and vendor workflows in one project
 
 
 
-\- User dashboard: Completed
-
-\- Vendor portal: Completed
-
-\- Authentication flow (App ID): Working
-
-\- Inventory CRUD: Working
-
-\- Docker Compose orchestration: Working
-
-\- End-to-end integration: Functional locally
+## Current Status
 
 
 
-\## Future Improvements
+- User dashboard: Completed
+
+- Vendor portal: Completed
+
+- Authentication flow (App ID): Working
+
+- Inventory CRUD: Working
+
+- Docker Compose orchestration: Working
+
+- End-to-end integration: Functional locally
 
 
 
-\- Order and checkout system for users
+## Future Improvements
 
-\- Prescription validation workflow
 
-\- Production cloud deployment
 
-\- Real-time inventory updates
+- Order and checkout system for users
 
-\- Analytics dashboard for vendors (sales + stock insights)
+- Prescription validation workflow
+
+- Production cloud deployment
+
+- Real-time inventory updates
+
+- Analytics dashboard for vendors (sales + stock insights)
 
 
 
