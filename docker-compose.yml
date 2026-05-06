@@ -1,0 +1,47 @@
+services:
+  inventory-service:
+    build: ./inventory-service
+    ports:
+      - "5001:5001"
+    env_file:
+      - .env
+
+  analytics-service:
+    build: ./analytics-service
+    ports:
+      - "5002:5002"
+    env_file:
+      - .env
+
+  recommendation-service:
+    build: ./recommendation-service
+    ports:
+      - "5003:5003"
+    env_file:
+      - .env
+
+  search-service:
+    build: ./search-service
+    ports:
+      - "5000:5000"
+    depends_on:
+      - inventory-service
+      - analytics-service
+      - recommendation-service
+
+  vendor-service:
+    build: ./vendor-service
+    ports:
+      - "5004:5004"
+    env_file:
+      - .env
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    env_file:
+      - .env
+    depends_on:
+      - search-service
+      - vendor-service

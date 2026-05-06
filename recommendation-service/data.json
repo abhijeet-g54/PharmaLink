@@ -1,0 +1,4 @@
+{
+  "paracetamol": ["crocin", "calpol"],
+  "crocin": ["paracetamol"]
+}
